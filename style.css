@@ -17,9 +17,12 @@ body {
   margin: 0 auto; /* centered */
   background: #f5f5f5;
   border-radius: 1rem;
-  padding: 2rem 5%;
+  padding: 2rem 0;
   box-shadow: 0 0.7rem 1.5rem rgb(54, 54, 54);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .todo-title {
@@ -33,7 +36,7 @@ body {
 }
 
 .todo-input {
-  width: 90%;
+  width: 67%;
   background: linear-gradient(135deg, rgb(57, 148, 57), rgb(140, 172, 139));
   color: #f5f5f5;
   display: block; /* required for margin auto to work */
@@ -52,6 +55,7 @@ body {
 }
 
 .todo-list {
+  width: 85%;
   margin: 1.5rem 0 0 0;
   list-style: none;
   padding: 0;
@@ -62,55 +66,39 @@ body {
 
 .todo-item {
   position: relative;
-  padding-left: 1.4rem;
+  padding-left: 0rem;
   font-weight: 500;
   line-height: 1.4rem;
   display: flex;
   align-items: flex-start;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.todo-item::before {
+.todo-text::before {
   content: "★"; /* star */
   color: rgb(57, 148, 57); /* make it green */
   margin-right: 0.4rem; /* space between star and text */
   flex-shrink: 0;
 }
 
-.todo-item.done::before {
+.todo-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.07);
+}
+
+.todo-item.done .todo-text::before {
   content: "✔"; /* checkmark instead of star */
   color: rgb(57, 148, 57);
 }
 
 .todo-text {
   cursor: pointer;
+  margin-right: 1rem;
 }
 
 .todo-item.done .todo-text {
   font-style: italic;
   color: rgb(57, 148, 57);
-}
-
-.todo-text::after {
-  content: "\00a0 \00a0 \00a0 \00a0 done ?";
-  font-style: italic;
-  font-size: 1rem;
-  color: rgb(140, 172, 139); /* a soft gray */
-
-  opacity: 0; /* hidden by default */
-  transition: opacity 0.2s ease;
-  font-weight: 450;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.todo-item.done .todo-text::after {
-  content: "\00a0 \00a0 \00a0 \00a0 not done yet ?";
-  color: gray;
-  font-style: normal;
-}
-
-.todo-text:hover::after {
-  opacity: 1; /* shows on hover */
 }
 
 .todo-item.just-clicked .todo-text::after {
@@ -132,5 +120,11 @@ body {
 
 .delete-btn:hover {
   color: rgb(57, 148, 57);
-  transform: scale(1.05);
+  /* transform: scale(1.01); */
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 14px;
+  }
 }

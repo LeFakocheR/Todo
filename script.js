@@ -63,20 +63,8 @@ list.addEventListener("click", function (event) {
     // toggle the .done class on the li
     li.classList.toggle("done");
     saveTodos();
-
-    li.classList.add("just-clicked");
   } else if (event.target.classList.contains("delete-btn")) {
     const li = event.target.closest("li");
     list.removeChild(li);
   }
 });
-
-list.addEventListener(
-  "mouseenter",
-  function (event) {
-    if (event.target.tagName === "LI") {
-      event.target.classList.remove("just-clicked");
-    }
-  },
-  true
-);
