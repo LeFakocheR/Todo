@@ -66,5 +66,6 @@ list.addEventListener("click", function (event) {
   } else if (event.target.classList.contains("delete-btn")) {
     const li = event.target.closest("li");
     list.removeChild(li);
+    saveTodos();
   }
 });
